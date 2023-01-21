@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Daviloper</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
+
+    <meta name="description" content="Sou o Davi Guimarães (Daviloper). Desenvolvo sites, com foco em performance, e responsividade.">
+</head>
+<body>
+    
+    <header role="banner">
+        <img src="me.jpg" alt="Foto de Perfil" class="rounded" width="50" height="50">
+        <nav>
+            <ul class="flex">
+                <li><a href="#aboutme">Sobre mim</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#skills">Conhecimentos</a></li>
+                <li><a href="#services">Serviços</a></li>
+            </ul>
+        </nav>
+        <img src="menu.svg" alt="Botão Menu" role="button" id="menu" onclick="toggleMenu();">
+    </header>
+    <div id="menu-nav">
+        <ul>
+            <li><a href="#aboutme">Sobre mim</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#skills">Conhecimentos</a></li>
+            <li><a href="#services">Serviços</a></li>
+        </ul>
+    </div>
+    <section id="intro" tabindex="0">
+        <div>
+            <div class="wrap">
+                <h1>Olá!</h1>
+                <h2>Me chamo Davi Guimarães.<br>Posso te mostrar os meus projetos?</h2>
+            </div>
+        </div>
+        <div>
+            <img src="me.jpg" alt="Eu em um lugar turístico em São José Do Rio Pardo" class="rounded" width="256" height="256">
+        </div>
+    </section>
+    <section id="aboutme" tabindex="0">
+        <div>
+            <div>
+                <h1>Sobre mim</h1>
+                <p>Me chamo Davi Guimarães (Daviloper). Sou desenvolvedor Front-end, mas estou ampliando meus conhecimentos para back-end. Desenvolvo sites com foco em performance, compatibilidade e experiência do usuário.</p>
+            </div>
+        </div>
+        <div>
+            <div><img src="coding.svg" alt="Ilustração de uma pessoa ao lado de um laptop grande com imagem de um globo" height="275" width="500"></div>
+        </div>
+    </section>
+    <section id="projects" tabindex="0">
+        <h1>Projetos</h1>
+        <div class="row">
+            <r-card heading="New Panic Tools" description="Site com 2 ferramentas básicas, feitas com HTML, CSS e JS." src="https://new-panic.github.io/New-Panic-Tools/"></r-card>
+
+            <r-card heading="Lima Copywriter" description="Site de portfólio para Lima Copywriter." src="https://limacopywriter.com.br/"></r-card>
+
+            <r-card heading="Noteit" description="Site simples para anotações. Feito com HTML, CSS e JS." src="https://daviloper0.github.io/noteit/"></r-card>
+        </div>
+        <a href="https://github.com/Daviloper0/" target="_blank" rel="external">Ver outros projetos no github</a>
+    </section>
+    <section id="skills" tabindex="0">
+        <h1>Conhecimentos</h1>
+        <div class="row">
+            <s-card progress="80" name="HTML"></s-card>
+            <s-card progress="60" name="CSS"></s-card>
+            <s-card progress="45" name="JS"></s-card>
+        </div>
+        <p>* Estimativa</p>
+    </section>
+    <section id="services" tabindex="0">
+        <h1>Serviços</h1>
+        <div class="row">
+            <i-card heading="Portfólios" description="Um site completo para mostrar todo o seu trabalho e capacidade, montado do jeito que você quiser."></i-card>
+            <i-card heading="Otimização de Sites" description="Seu site está lento para carregar ou está consumindo muitos recursos da sua hospedagem? Talvez seja o momento para otimiza-lo."></i-card>
+            <i-card heading="Outros" description="Caso queira outro serviço de desenvolvimento web, não deixe de me contatar por meio das minhas redes sociais."></i-card>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <a href="https://www.instagram.com/daviloper0/" rel="external" target="_blank"><img src="instagram.svg" alt="instagram" height="50" width="50"></a>
+            <a href="https://github.com/Daviloper0" rel="external" target="_blank"><img src="github.png" alt="Github" width="38" height="38"></a> 
+        </div>
+    </footer>
+    <script src="card.js"></script>
+    <script>
+        const menu = document.querySelector("#menu");
+        const navigation = document.querySelector("#menu-nav")
+        function toggleMenu() {
+            window.onresize = () => {
+                if (window.innerWidth > 550) {
+                    navigation.style.display = 'none'
+                    menu.src = './menu.svg'
+                }
+            }
+            if (navigation.style.display === 'block') {
+                menu.src = './menu.svg' 
+                navigation.style.display = 'none';
+            } else {
+                menu.src = './close.svg'
+                navigation.style.display = 'block'
+            }
+        }
+    </script>
+</body>
+</html>

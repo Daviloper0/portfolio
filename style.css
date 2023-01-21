@@ -177,6 +177,12 @@ section#skills {
     text-align: center;
     background-image: linear-gradient(180deg, var(--primary), var(--primary-alt));
 }
+section#skills a {
+    color: var(--contrast-hover);
+}
+section#skills a:hover {
+    color: var(--secondary);
+}
 section#services {
     margin-top: 3rem;
     background-color: var(--primary-alt);

@@ -1,71 +1,63 @@
-class Buttons {
-    
-}
-
-class Buttons {
+class Calculator {
     constructor () {
-        document.querySelectorAll('.button').forEach(element => {
-            element.addEventListener('click', () => {
-                this._getFunctionOf(element.id)
-            })
-            this[`_${element.id}`] = element
-        });
-        this[`_number-0`] = document.querySelector('#number-0')
-        this[`_number-0`].addEventListener('click', () => {
-            this._getFunctionOf('number-0')
-        });
+        this.buttons = document.querySelectorAll('.button')
+        this.number0 = document.querySelector('#number0')
+        this.visor = new Visor();
+        this.addButtonsToClass();
     }
-
-    _getFunctionOf(elementId) {
-        if (this.isElementNumber(elementId)) return this.addNumberToVisor(elementId)
+    addButtonsToClass() {
+        this.buttons.forEach(button => {
+            this[`${button.id}`] = button;
+            this.addEvent(button)
+        })
         
-        const functionsByElements = {
-            'allclear': this.allClear(),
-            'plusminus': '',
-            'percentage': '',
-            'divide': '',
-            'multiply': '',
-            'subtract': '',
-            'sum': '',
-            'equals': '',
+        this.number0.addEventListener('click', () => {this.addNumberToVisor(this.number0.id)})
+    }
+    addEvent(button) {
+        button.addEventListener('click', () => {
+            if (button.id.startsWith('number')) return this.addNumberToVisor(button.id)
+            
+            this.runFunction(button.id)
+        })
+    }
+    runFunction(buttonId) {
+        const functionsByButtons = {
+            'allclear': this.setAllClear(),
+            'plusminus': () => {},
+            'percentage': () => {},
+            'divide': () => {},
+            'multiply': () => {},
+            'subtract': () => {},
+            'sum': () => {},
+            'equals': () => {},
         }
-        functionsByElements[elementId]
+        functionsByButtons[buttonId];
     }
-    addNumberToVisor(number) {
+    addNumberToVisor(buttonId) {
         this.removeAllClear()
-        return addVisor(this.getValueFrom(number))
+        return this.visor.value = parseInt(this.visor.value + this[`${buttonId}`].textContent)
     }
 
-    getValueFrom(elementId) {
-        return this[`_${elementId}`].textContent
+    removeAllClear() { 
+        document.querySelector('#allclear').innerHTML = 'C' 
     }
-
-    isElementNumber(elementId) {
-        return elementId.startsWith('number-')
-    }
-
-    allClear() {
-        this.setAllClear()
-        return setVisor(0);
-    }
-    removeAllClear() {
-        document.querySelector('#allclear').innerHTML = 'C'
-    }
+    
     setAllClear() {
+        this.visor.value = 0
         document.querySelector('#allclear').innerHTML = 'AC'
     }
-    
 }
 
-function getVisor() {
-    return parseInt(document.querySelector('.visor').innerHTML)
+class Visor {
+    constructor() {
+        this._visor = document.querySelector('.visor');
+    }
+    get value() {
+        return this._visor.innerHTML
+    }
+    set value(value = 0) {
+        this._visor.innerHTML = value
+    }
 }
-function addVisor(value) {
-    return document.querySelector('.visor').innerHTML = parseInt(getVisor() + value)
-}
-function setVisor(value = 0) {
-    return document.querySelector('.visor').innerHTML = value 
-}
-
-const buttons = new Buttons();
+const buttons = new Calculator();
 

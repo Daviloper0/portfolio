@@ -1,4 +1,8 @@
 class Buttons {
+    
+}
+
+class Buttons {
     constructor () {
         document.querySelectorAll('.button').forEach(element => {
             element.addEventListener('click', () => {
